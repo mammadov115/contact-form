@@ -77,11 +77,10 @@
 
 * [+] `SuccessMessageMixin` və ya `messages` framework istifadə et
 * [+] CAPTCHA (Google reCAPTCHA) əlavə et
-* [ ] Email göndərişi əlavə et (form göndəriləndə adminə mail getsin)
+* [+] Email göndərişi əlavə et (form göndəriləndə adminə mail getsin)
 * [ ] Docker və ya CI/CD pipeline qur (deployment üçün)
 * [ ] Unit testlər yaz (`tests.py`)
 
 
 <!-- iwwx yqry plqg onhq -->
-Captchanin errorlari gorsenmir
 captcha ve email qeydlerini notionda yaz

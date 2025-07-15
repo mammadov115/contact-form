@@ -11,10 +11,16 @@
     <div class="container">
         <h1>{% block header %}Saytımıza Xoş Gəlmisiniz{% endblock %}</h1>
 
-        {% if messages %}
+        {% if messages or form.non_field_errors %}
             {% for message in messages %}
                 <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
                     {{ message }}
+                </div>
+            {% endfor %}
+
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {{ error }}
                 </div>
             {% endfor %}
         {% endif %}

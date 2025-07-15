@@ -33,10 +33,7 @@ def contact_view(request):
             )
             email.send(fail_silently=False)
 
-
             return redirect('home')
-        else:
-            messages.error(request, "Xəta baş verdi. Zəhmət olmasa, formu düzgün doldurun.")
     else:
         form = ContactMessageForm()
     return render(request, 'contact/contact_form.html', {'form': form, 'RECAPTCHA_SITE_KEY': settings.RECAPTCHA_SITE_KEY})
