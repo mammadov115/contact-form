@@ -1,0 +1,63 @@
+<!-- templates/contact/contact_form.html -->
+{% extends "base.html" %}
+
+{% block title %}Əlaqə Formu{% endblock %}
+
+{% block content %}
+    <form method="post" class="contact-form" id="contact-form">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {% for error in form.name.errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {% for error in form.email.errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.subject.label_tag }}
+            {{ form.subject }}
+            {% for error in form.subject.errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.message.label_tag }}
+            {{ form.message }}
+            {% for error in form.message.errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <!-- reCAPTCHA -->
+        {{ form.captcha_token }}
+        <div class="g-recaptcha" data-sitekey="{{ RECAPTCHA_SITE_KEY }}"></div>
+
+        <button type="submit" class="btn">Göndər</button>
+    </form>
+
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    {% comment %} <script>
+        const form = document.getElementById("contact-form");
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            grecaptcha.ready(function () {
+                grecaptcha.execute('{{ RECAPTCHA_SITE_KEY }}', {action: 'submit'}).then(function(token) {
+                    document.getElementById('id_captcha_token').value = token;
+                    form.submit();
+                });
+            });
+        });
+    </script> {% endcomment %}
+{% endblock %}
